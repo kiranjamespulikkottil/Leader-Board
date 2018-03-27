@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <p><a href="{% url 'score_user' %}">View My Score</a></p>
+  {% endif %}
+  
+  {% for s in object_list %}
+    <div class="score-entry">
+      <h2>{{ s.name }}</h2>
+      <p>{{ s.score }}</p>
+    </div>
+  {% endfor %}
+{% endblock content %}

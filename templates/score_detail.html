@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="score-entry">
+    <h2>{{ object.name }}</h2>
+    <p>{{ object.score }}</p>
+  </div>
+  <a href="{% url 'score_update' score.name %}">+ Update  Score</a>
+  <p><a href="{% url 'score_delete' score.name %}">+ Delete Score</a></p>
+{% endblock content %}
