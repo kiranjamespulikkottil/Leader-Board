@@ -2,11 +2,24 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  {% for score in object_list %}
-    <div class="post-entry">
-      <h2><a href="{% url 'score_detail' score.name %}">{{ score.name }}</a></h2>
-      <p>{{ score.score }}</p>
-    </div>
-  {% endfor %}
+  
+    <table class="table table-bordered" style="text-align: center">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for score in object_list %}
+        <div class="post-entry">
+          <tr>
+            <td><a href="{% url 'score_detail' score.name %}">{{ score.name }}</a></td>
+            <td><p>{{ score.score }}</p></td>
+          </tr>
+        </div>
+        {% endfor %}
+      </tbody>
+    </table>
 {% endif %}
 {% endblock content %}

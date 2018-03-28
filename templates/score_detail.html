@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="score-entry">
-    <h2>{{ object.name }}</h2>
-    <p>{{ object.score }}</p>
-  </div>
-  <a href="{% url 'score_update' score.name %}">+ Update  Score</a>
-  <p><a href="{% url 'score_delete' score.name %}">+ Delete Score</a></p>
+
+    <table class="table" style="text-align: center">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div class="score-entry">
+          <tr>
+            <td><h2>{{ object.name }}<h2></td>
+            <td><p>{{ object.score }}</p></td>
+          </tr>
+          <tr>
+            <td><a href="{% url 'score_update' score.name %}" class="btn btn-info"> Update  Score</a></td>
+            <td><a href="{% url 'score_delete' score.name %}" class="btn btn-danger"> Delete Score</a></td>
+        </div>
+      </tbody>
+    </table>
 {% endblock content %}
