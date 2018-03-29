@@ -19,7 +19,13 @@ class ScoreDetailView(DetailView):
 class ScoreCreateView(CreateView):
     model = Score
     template_name = 'score_new.html'
-    fields = '__all__'
+    fields = ['name', 'score']
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.scoreadmin = self.request.user
+        return super(ScoreCreateView, self).form_valid(form)
+
 
 class ScoreUpdateView(UpdateView):
     model = Score
